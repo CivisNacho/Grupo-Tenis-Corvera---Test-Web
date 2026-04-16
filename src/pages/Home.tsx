@@ -13,7 +13,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl font-bold leading-[1.1] mb-4"
           >
-            Tu pasión por el tenis comienza aquí.
+            GRUPO TENIS CORVERA
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg opacity-90 mb-8 leading-relaxed"
           >
-            Disfruta de las mejores instalaciones y una escuela de alto rendimiento en el corazón de Corvera.
+            ¡¡QUE NO TE LO CUENTEN, VEN Y DISFRUTA DEL TENIS!!
           </motion.p>
           <Link
             to="/contacto"
@@ -60,20 +60,6 @@ export default function Home() {
               <h3 className="text-lg font-semibold">Torneos y Ligas</h3>
               <p className="text-sm text-text-muted leading-relaxed">
                 Calendario actualizado de competiciones federadas y ligas sociales durante todo el año.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg border border-border-card shadow-sm space-y-3">
-              <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Deporte</span>
-              <h3 className="text-lg font-semibold">Pádel Corvera</h3>
-              <p className="text-sm text-text-muted leading-relaxed">
-                Disponemos de pistas de última generación para disfrutar del deporte más dinámico.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg border border-border-card shadow-sm space-y-3">
-              <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Servicios</span>
-              <h3 className="text-lg font-semibold">Club Social</h3>
-              <p className="text-sm text-text-muted leading-relaxed">
-                Zonas comunes, vestuarios y cafetería para completar tu experiencia deportiva.
               </p>
             </div>
           </div>

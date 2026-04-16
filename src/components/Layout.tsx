@@ -25,17 +25,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-bg-main">
       {/* Header */}
-      <header className="h-24 px-6 md:px-12 flex items-center justify-between border-b border-border-light bg-white sticky top-0 z-50">
-        <Link to="/" className="flex items-center gap-4">
-          <img 
-            src="https://www.teniscorvera.com/.cm4all/uproc.php/0/logooo.jpg?_=19b224f8100" 
-            alt="Grupo Tenis Corvera" 
-            className="h-16 w-auto object-contain"
-            referrerPolicy="no-referrer"
-          />
-          <span className="font-extrabold text-2xl text-primary uppercase tracking-tight hidden sm:block">
-            Grupo Tenis Corvera
-          </span>
+      <header className="h-28 px-6 md:px-12 flex items-center justify-between border-b border-border-light bg-white sticky top-0 z-50">
+        <Link to="/" className="flex items-center gap-6">
+          <div className="h-20 w-auto bg-white p-1 rounded border border-border-light shadow-sm">
+            <img 
+              src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.logo%20corvera.jpg/picture-800?_=19c8299af88" 
+              alt="Grupo Tenis Corvera" 
+              className="h-full w-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-2xl text-primary leading-none tracking-tight">
+              GRUPO TENIS
+            </span>
+            <span className="font-extrabold text-2xl text-primary leading-none tracking-tight">
+              CORVERA
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -67,7 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-20 left-0 right-0 md:hidden bg-white border-b border-border-light px-6 py-6 space-y-2 shadow-xl"
+            className="absolute top-28 left-0 right-0 md:hidden bg-white border-b border-border-light px-6 py-6 space-y-2 shadow-xl"
           >
             {NAV_LINKS.map((link) => (
               <Link
