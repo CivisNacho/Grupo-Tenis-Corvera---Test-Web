@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { GALLERY } from '../constants';
+import ImageModal from '../components/ImageModal';
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const openImage = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
   return (
     <div className="flex flex-col">
+      <ImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
+      
       {/* Hero Section */}
       <section className="h-[380px] relative overflow-hidden bg-gradient-to-br from-[#2d5a27] to-[#1e3d1a] flex items-center px-6 md:px-12">
         <div className="relative z-10 text-white max-w-lg">
@@ -70,8 +85,20 @@ export default function Home() {
               <h3 className="text-xl font-bold text-primary">TORNEO AVILES</h3>
               <p className="text-sm font-medium text-text-muted">SÁBADO: ORDEN DE JUEGO</p>
               <div className="grid grid-cols-2 gap-4">
-                <img src="/.cm4all/uproc.php/0/.logo%20corvera.jpg/picture-800?_=19c8299af88" alt="Logo" className="rounded-lg w-full grayscale hover:grayscale-0 transition-all" referrerPolicy="no-referrer" />
-                <img src="/.cm4all/uproc.php/0/.Captura%20cartel_1.PNG/picture-800?_=19b66cf2c60" alt="Cartel" className="rounded-lg w-full" referrerPolicy="no-referrer" />
+                <img 
+                  src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.logo%20corvera.jpg/picture-800?_=19c8299af88" 
+                  alt="Logo" 
+                  className="rounded-lg w-full grayscale hover:grayscale-0 transition-all cursor-zoom-in" 
+                  referrerPolicy="no-referrer"
+                  onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.logo%20corvera.jpg/picture-800?_=19c8299af88", "Logo")}
+                />
+                <img 
+                  src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura%20cartel_1.PNG/picture-800?_=19b66cf2c60" 
+                  alt="Cartel" 
+                  className="rounded-lg w-full cursor-zoom-in" 
+                  referrerPolicy="no-referrer"
+                  onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura%20cartel_1.PNG/picture-800?_=19b66cf2c60", "Cartel")}
+                />
               </div>
             </div>
 
@@ -81,9 +108,27 @@ export default function Home() {
                 <span className="text-[10px] font-bold bg-accent/20 text-primary px-2 py-0.5 rounded uppercase">Juego de Pies</span>
               </div>
               <div className="grid grid-cols-3 gap-3">
-                <img src="/.cm4all/uproc.php/0/.CALENDARIO.PNG/picture-400?_=19c57cb2b0f" alt="Cal" className="rounded-lg w-full border border-border-light" referrerPolicy="no-referrer" />
-                <img src="/.cm4all/uproc.php/0/.abril.PNG/picture-400?_=19d1e973f09" alt="Abr" className="rounded-lg w-full border border-border-light" referrerPolicy="no-referrer" />
-                <img src="/.cm4all/uproc.php/0/.mayo.PNG/picture-400?_=19d1e9810d7" alt="May" className="rounded-lg w-full border border-border-light" referrerPolicy="no-referrer" />
+                <img 
+                  src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.CALENDARIO.PNG/picture-400?_=19c57cb2b0f" 
+                  alt="Cal" 
+                  className="rounded-lg w-full border border-border-light cursor-zoom-in" 
+                  referrerPolicy="no-referrer"
+                  onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.CALENDARIO.PNG/picture-400?_=19c57cb2b0f", "Calendario")}
+                />
+                <img 
+                  src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.abril.PNG/picture-400?_=19d1e973f09" 
+                  alt="Abr" 
+                  className="rounded-lg w-full border border-border-light cursor-zoom-in" 
+                  referrerPolicy="no-referrer"
+                  onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.abril.PNG/picture-400?_=19d1e973f09", "Entrenamientos Abril")}
+                />
+                <img 
+                  src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.mayo.PNG/picture-400?_=19d1e9810d7" 
+                  alt="May" 
+                  className="rounded-lg w-full border border-border-light cursor-zoom-in" 
+                  referrerPolicy="no-referrer"
+                  onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.mayo.PNG/picture-400?_=19d1e9810d7", "Entrenamientos Mayo")}
+                />
               </div>
             </div>
           </div>
@@ -109,8 +154,9 @@ export default function Home() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-zoom-in hover:scale-105 transition-transform"
                 referrerPolicy="no-referrer"
+                onClick={() => openImage(item.image, item.title)}
               />
             </motion.div>
           ))}

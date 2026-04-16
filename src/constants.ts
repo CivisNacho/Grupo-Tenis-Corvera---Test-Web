@@ -98,6 +98,5 @@ export const CORVERA_IMAGES = [
   { image: 'https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura%20mapa%20corvera.PNG/picture-800?_=19b05469f28', title: 'Mapa Corvera' },
   { image: 'https://www.teniscorvera.com/.cm4all/uproc.php/0/asturias.gif?_=19b05472aea', title: 'Asturias' },
   { image: 'https://www.teniscorvera.com/.cm4all/uproc.php/0/europa.gif?_=19b054b0810', title: 'Europa' },
-  { image: 'https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura.PNG/picture-800?_=19b058b9587', title: 'Captura' },
 ];
 

@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { GALLERY } from '../constants';
+import ImageModal from '../components/ImageModal';
 
 export default function Videos() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const openImage = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 space-y-24">
+      <ImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
+      
       <section className="space-y-12">
         <div className="space-y-2">
           <span className="text-[11px] font-bold text-primary uppercase tracking-[2px]">Archivo</span>
@@ -16,7 +31,8 @@ export default function Videos() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="aspect-square rounded-xl overflow-hidden border border-border-card shadow-sm group"
+              className="aspect-square rounded-xl overflow-hidden border border-border-card shadow-sm group cursor-zoom-in"
+              onClick={() => openImage(item.image, item.title)}
             >
               <img
                 src={item.image}

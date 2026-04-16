@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { EVENTS } from '../constants';
+import ImageModal from '../components/ImageModal';
 
 export default function Eventos() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const openImage = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 space-y-16">
+      <ImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
+      
       <div className="space-y-2">
         <span className="text-[11px] font-bold text-primary uppercase tracking-[2px]">Histórico</span>
         <h1 className="text-4xl font-bold uppercase">Eventos</h1>
@@ -19,7 +34,7 @@ export default function Eventos() {
             className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
           >
             <div className="flex-1 w-full">
-              <div className="relative group">
+              <div className="relative group cursor-zoom-in" onClick={() => openImage(event.image, event.title)}>
                 <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img
                   src={event.image}

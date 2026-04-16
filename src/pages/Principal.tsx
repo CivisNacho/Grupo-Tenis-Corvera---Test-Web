@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { TEAM } from '../constants';
+import ImageModal from '../components/ImageModal';
 
 export default function Principal() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const openImage = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 space-y-24">
+      <ImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
+      
       {/* Equipo Tecnico */}
       <section className="space-y-12">
         <div className="space-y-2">
@@ -24,8 +39,9 @@ export default function Principal() {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform group-hover:scale-105 cursor-zoom-in"
                   referrerPolicy="no-referrer"
+                  onClick={() => openImage(member.image, member.name)}
                 />
               </div>
               <div className="p-6 space-y-3">
@@ -54,31 +70,33 @@ export default function Principal() {
           <div className="space-y-4">
             <div className="rounded-2xl overflow-hidden border border-border-card shadow-lg">
               <img
-                src="/.cm4all/uproc.php/0/.grupo.jpg/picture-800?_=19b059d2f50"
+                src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.grupo.jpg/picture-800?_=19b059d2f50"
                 alt="Grupo"
-                className="w-full h-auto"
+                className="w-full h-auto cursor-zoom-in"
                 referrerPolicy="no-referrer"
+                onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.grupo.jpg/picture-800?_=19b059d2f50", "Grupo")}
               />
             </div>
-            <p className="text-sm text-text-muted italic">grupo</p>
+            <p className="text-sm text-text-muted italic text-center">Escuela de Tenis Corvera</p>
           </div>
           <div className="space-y-4">
             <div className="rounded-2xl overflow-hidden border border-border-card shadow-lg">
               <img
-                src="/.cm4all/uproc.php/0/.ec14.jpg/picture-800?_=19b05a13e60"
-                alt="ec14"
-                className="w-full h-auto"
+                src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.ec14.jpg/picture-800?_=19b05a13e60"
+                alt="Escuela de Tenis"
+                className="w-full h-auto cursor-zoom-in"
+                onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.ec14.jpg/picture-800?_=19b05a13e60", "Escuela de Tenis")}
               />
             </div>
-            <p className="text-sm text-text-muted italic">ec14</p>
+            <p className="text-sm text-text-muted italic text-center">Entrenamiento</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <img src="/.cm4all/uproc.php/0/.Captura11111111.PNG/picture-800?_=19b05b13450" alt="Info 1" className="rounded-xl w-full border border-border-card shadow-sm" referrerPolicy="no-referrer" />
-          <img src="/.cm4all/uproc.php/0/.minisandrainesmarina1.jpg/picture-800?_=19b05b91ac1" alt="Info 2" className="rounded-xl w-full border border-border-card shadow-sm" referrerPolicy="no-referrer" />
-          <img src="/.cm4all/uproc.php/0/.Captura_1.PNG/picture-800?_=19b05a21c00" alt="Info 3" className="rounded-xl w-full border border-border-card shadow-sm" referrerPolicy="no-referrer" />
-          <img src="/.cm4all/uproc.php/0/.minisandrainesmarina2_1.jpg/picture-800?_=19b05ba6ad1" alt="Info 4" className="rounded-xl w-full border border-border-card shadow-sm" referrerPolicy="no-referrer" />
+          <img src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura11111111.PNG" alt="Información" className="rounded-xl w-full border border-border-card shadow-sm cursor-zoom-in" referrerPolicy="no-referrer" onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura11111111.PNG", "Información")} />
+          <img src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.minisandrainesmarina1.jpg" alt="Información" className="rounded-xl w-full border border-border-card shadow-sm cursor-zoom-in" referrerPolicy="no-referrer" onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.minisandrainesmarina1.jpg", "Información")} />
+          <img src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura_1.PNG" alt="Información" className="rounded-xl w-full border border-border-card shadow-sm cursor-zoom-in" referrerPolicy="no-referrer" onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.Captura_1.PNG", "Información")} />
+          <img src="https://www.teniscorvera.com/.cm4all/uproc.php/0/.minisandrainesmarina2_1.jpg" alt="Información" className="rounded-xl w-full border border-border-card shadow-sm cursor-zoom-in" referrerPolicy="no-referrer" onClick={() => openImage("https://www.teniscorvera.com/.cm4all/uproc.php/0/.minisandrainesmarina2_1.jpg", "Información")} />
         </div>
       </section>
     </div>
