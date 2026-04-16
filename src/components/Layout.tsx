@@ -25,11 +25,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-bg-main">
       {/* Header */}
-      <header className="h-20 px-6 md:px-12 flex items-center justify-between border-b border-border-light bg-white sticky top-0 z-50">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-full border-2 border-accent" />
-          <span className="font-extrabold text-xl text-primary uppercase tracking-wider">
-            Club Tenis Corvera
+      <header className="h-24 px-6 md:px-12 flex items-center justify-between border-b border-border-light bg-white sticky top-0 z-50">
+        <Link to="/" className="flex items-center gap-4">
+          <img 
+            src="https://www.teniscorvera.com/.cm4all/uproc.php/0/logooo.jpg?_=19b224f8100" 
+            alt="Grupo Tenis Corvera" 
+            className="h-16 w-auto object-contain"
+            referrerPolicy="no-referrer"
+          />
+          <span className="font-extrabold text-2xl text-primary uppercase tracking-tight hidden sm:block">
+            Grupo Tenis Corvera
           </span>
         </Link>
 
@@ -89,7 +94,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Footer */}
       <footer className="bg-white border-t border-border-light py-8 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-text-muted">
-          <div>&copy; {new Date().getFullYear()} Club de Tenis Corvera. Todos los derechos reservados.</div>
+          <div>&copy; {new Date().getFullYear()} Grupo Tenis Corvera. Todos los derechos reservados.</div>
           <div className="flex flex-wrap justify-center gap-6">
             <span className="flex items-center gap-1">📍 Calle Deporte S/N, Corvera, Murcia</span>
             <span className="flex items-center gap-1">📞 +34 968 000 000</span>
